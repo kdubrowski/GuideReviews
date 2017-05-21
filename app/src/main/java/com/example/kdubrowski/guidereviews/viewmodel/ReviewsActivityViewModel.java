@@ -3,18 +3,14 @@ package com.example.kdubrowski.guidereviews.viewmodel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.os.AsyncTask;
-import android.util.Log;
 
 import com.example.kdubrowski.guidereviews.BuildConfig;
-import com.example.kdubrowski.guidereviews.R;
 import com.example.kdubrowski.guidereviews.webservice.GetYourGuideAPI;
 import com.example.kdubrowski.guidereviews.webservice.ReviewModel;
 import com.example.kdubrowski.guidereviews.webservice.ReviewsSearchResult;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Exchanger;
 
 import retrofit2.Call;
 import retrofit2.Callback;

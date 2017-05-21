@@ -10,27 +10,45 @@
             type="boolean" />
     </data>
 
-    <RelativeLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
-        tools:context="com.example.kdubrowski.guidereviews.ReviewsActivity">
+        android:layout_height="match_parent">
 
+        <include layout="@layout/app_bar" />
 
-        <ProgressBar
-            style="?android:progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:visibleGone="@{isLoading}" />
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/reviews_list"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="LinearLayoutManager"
-            app:visibleGone="@{!isLoading}" />
+            android:animateLayoutChanges="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="com.example.kdubrowski.guidereviews.ReviewsActivity">
 
-    </RelativeLayout>
+
+            <ProgressBar
+                style="?android:progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:visibleGone="@{isLoading}" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/reviews_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="LinearLayoutManager"
+                app:visibleGone="@{!isLoading}" />
+
+        </RelativeLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_add_comment"
+            android:tint="@android:color/white"
+            app:fabSize="normal" />
+    </android.support.design.widget.CoordinatorLayout>
 </layout>

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GuideReviews</string>
+    <string name="review_title_hint">Title</string>
+    <string name="review_message_hint">Message</string>
+    <string name="review_is_anonymous_hint">Post review anonymously</string>
 </resources>
