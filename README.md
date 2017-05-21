@@ -9,3 +9,10 @@ This application was built using:
 * [InfiniteScroll](https://github.com/pwittchen/InfiniteScroll "InfiniteScroll")
 * Android databinding
 * Android architecture components
+* Google Gson
+
+# To be worked on
+* Visual error handling when data is not available
+* Caching of the data on the disk so it is available to the user when returning but offline
+* Indication that no data was loaded
+* More complete handling of the add review web service method
