@@ -22,6 +22,7 @@ public class ReviewsActivityViewModel extends ViewModel {
 
     public final static int PAGE_SIZE = 20;
     private final MutableLiveData<List<ReviewModel>> mObservableReviews;
+    private final MutableLiveData<Boolean> mIsLoading;
     private final Retrofit mRetrofit;
     private Call<ReviewsSearchResult> mReviewsCall;
     private int mCurrentPageNumber;
@@ -33,10 +34,14 @@ public class ReviewsActivityViewModel extends ViewModel {
         mObservableReviews = new MutableLiveData<>();
         mObservableReviews.setValue(null);
 
+        mIsLoading = new MutableLiveData<>();
+        mIsLoading.setValue(true);
+
         mRetrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(BuildConfig.SERVER_URL).build();
         loadFromWebService(mCurrentPageNumber, new Callback<ReviewsSearchResult>() {
             @Override
             public void onResponse(Call<ReviewsSearchResult> call, Response<ReviewsSearchResult> response) {
+                mIsLoading.setValue(false);
                 if (response.isSuccessful()) {
                     List<ReviewModel> retrievedData = response.body().getData();
                     if (retrievedData != null) {
@@ -48,11 +53,16 @@ public class ReviewsActivityViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<ReviewsSearchResult> call, Throwable t) {
+                mIsLoading.setValue(false);
                 t.printStackTrace();
             }
         });
 
 
+    }
+
+    public LiveData<Boolean> isLoading() {
+        return mIsLoading;
     }
 
     public LiveData<List<ReviewModel>> getReviews() {

@@ -56,11 +56,14 @@ public class ReviewsActivity extends LifecycleActivity {
             @Override
             public void onChanged(@Nullable List<ReviewModel> reviewModels) {
                 if (reviewModels != null) {
-                    mBinding.setIsLoading(false);
                     mReviewsAdapter.setReviews(reviewModels);
-                } else {
-                    mBinding.setIsLoading(true);
                 }
+            }
+        });
+        viewModel.isLoading().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(@Nullable Boolean aBoolean) {
+                mBinding.setIsLoading(aBoolean);
             }
         });
     }
